@@ -1,7 +1,7 @@
-Memory Card Game 🃏
-A fun and challenging memory card matching game built with HTML, CSS, and JavaScript. Test your memory skills with different difficulty levels and track your performance with move counters and timers!
+# 🃏Memory Card Game 
+   ##### 🎮 A fun and challenging memory card matching game built with HTML, CSS, and JavaScript. Test your memory skills with different difficulty levels and track your performance with move counters and timers!
 
- Features ✨
+### Features ✨
     
     Three Difficulty Levels:
       ✅Easy (4×4 grid)
@@ -24,7 +24,7 @@ A fun and challenging memory card matching game built with HTML, CSS, and JavaSc
       ✅Fully responsive design
       ✅Intuitive controls
 
-How to Play 🎮
+### How to Play 🎮
       
     Select your difficulty level
       ☑️Click "Start Game" to begin
@@ -32,10 +32,15 @@ How to Play 🎮
       ☑️Flip cards to find matching pairs
       ☑️Complete the game with the fewest moves and fastest time!
 
-Future Enhancements 🚀
+### Future Enhancements 🚀
       
       🔮Add sound effects
       🔮Implement high score tracking
       🔮Create card themes (animals, fruits, flags)
       🔮Add countdown timer mode
       🔮Implement player profiles
+### 📷 Memory Card Game:
+<img width="1178" height="1192" alt="image" src="https://github.com/user-attachments/assets/6bc119d9-e00e-4d40-bd14-b16d8034ffbb" />
+
+
+
