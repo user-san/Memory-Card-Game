@@ -1,0 +1,321 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: monospace;
+}
+
+body {
+  background-color: #f5f5f5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+h1 {
+  margin: 20px 0;
+  color: #333;
+}
+
+.game-controls {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 20px;
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.stats {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  padding-left: 20px;
+}
+
+.stat {
+  font-size: 16px;
+}
+
+.difficulty {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+button {
+  padding: 8px 15px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s;
+}
+
+button:hover {
+  background-color: #44e759;
+}
+
+button:active {
+  transform: scale(0.9);
+}
+
+button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.info-btn {
+  background-color: #2196f3 !important;
+  padding: 8px 12px !important;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
+
+.info-btn i {
+  font-size: 20px;
+}
+
+.game-board {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  width: 100%;
+  max-width: 500px;
+  height: 500px;
+  margin: 0 auto;
+}
+
+.game-board.easy {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.game-board.medium {
+  grid-template-columns: repeat(6, 1fr);
+}
+
+.game-board.hard {
+  grid-template-columns: repeat(8, 1fr);
+}
+
+.card {
+  width: 100%;
+  height: 100%;
+  background-color: #2196f3;
+  border-radius: 8px;
+  cursor: pointer;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card.flipped {
+  transform: rotateY(180deg);
+}
+
+.card.matched {
+  background-color: #8bc34a;
+  cursor: default;
+}
+
+.card-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  font-size: 24px;
+}
+
+.card-front {
+  background-color: #2196f3;
+  color: white;
+}
+
+.card-back {
+  background-color: white;
+  color: #333;
+  transform: rotateY(180deg);
+}
+
+.win-message {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 24px;
+  z-index: 100;
+}
+
+.win-message.show {
+  display: flex;
+}
+
+.win-message button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 18px;
+}
+
+/* Rules Modal Styles */
+.rules-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0);
+  z-index: 200;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+.rules-modal.show {
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  max-width: 500px;
+  width: 90%;
+  position: relative;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: translateY(-20px);
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.rules-modal.show .modal-content {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.modal-content h2 {
+  margin-bottom: 20px;
+  color: #2196f3;
+}
+
+.modal-content ul {
+  padding-left: 20px;
+}
+
+.modal-content li {
+  margin-bottom: 10px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #333;
+}
+
+.close-btn:hover {
+  color: #f44336;
+}
+
+@media (max-width: 650px) {
+  .stats {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .stat {
+    font-size: 20px;
+  }
+
+  .difficulty,
+  .difficulty button {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
+    font-size: 15px;
+    width: 5rem;
+  }
+
+  button {
+    padding: 8px 15px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+  }
+
+  .game-board {
+    height: 400px;
+    max-width: 400px;
+  }
+
+  .game-controls {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    padding: 15px;
+    padding-inline: 5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  .win-message {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 50px;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 24px;
+    z-index: 100;
+  }
+}
